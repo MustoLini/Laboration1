@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -37,10 +38,106 @@ public class Main {
 
     private static void inOrder() {
         System.out.println("4");
+        Scanner writerAltern = new Scanner(System.in);
+        int counter = 0;
+        ArrayList<Integer> minAndMaxList = new ArrayList<>();
+        while (counter != 5) {
+            int writer = Integer.parseInt(writerAltern.next());
+            minAndMaxList.add(writer);
+            counter++;
+        }
+        int sum = 0;
+
+        for (int i = 0; i < minAndMaxList.size(); i++) {
+            sum += minAndMaxList.get(i);
+        }
+
+        for (int i = 0; i < minAndMaxList.size(); i++) {
+            System.out.print(minAndMaxList.get(i) + " ");
+        }
+        Collections.sort(minAndMaxList);
+        System.out.println();
+        System.out.println("Second Max value: " + minAndMaxList.get(3));
+        System.out.println("Second Min value: " + minAndMaxList.get(1));
+        int min = Collections.min(minAndMaxList);
+        int max = Collections.max(minAndMaxList);
+        System.out.println("Max value: " + max);
+        System.out.println("Min value: " + min);
+        System.out.println("Sum: " + sum);
+
     }
 
     private static void rockPaperScissor() {
         System.out.println("3");
+        int playerScore = 0;
+        int pcScore = 0;
+        Random random = new Random();
+        Scanner writerAlt = new Scanner(System.in);
+        int upperbound = 3;
+        while (true) {
+            System.out.println("Rock, Paper, Scissor What do you want to pick?");
+            int randomNumber = random.nextInt(upperbound);
+            String writer = writerAlt.next();
+            if (writer.equals("Rock") && randomNumber == 0) {
+                System.out.println("Draw: ");
+                System.out.println("PlayersScore: " + playerScore);
+                System.out.println("PcScore: " + pcScore);
+            }
+            if (writer.equals("Rock") && randomNumber == 1) {
+                System.out.println("PC wins: ");
+                pcScore++;
+                System.out.println("PlayersScore: " + playerScore);
+                System.out.println("PcScore: " + pcScore);
+            }
+            if (writer.equals("Rock") && randomNumber == 2) {
+                System.out.println("Player wins: ");
+                playerScore++;
+                System.out.println("PlayersScore: " + playerScore);
+                System.out.println("PcScore: " + pcScore);
+            }
+            if (writer.equals("Paper") && randomNumber == 0) {
+                System.out.println("Player wins: ");
+                playerScore++;
+                System.out.println("PlayersScore: " + playerScore);
+                System.out.println("PcScore: " + pcScore);
+            }
+            if (writer.equals("Paper") && randomNumber == 1) {
+                System.out.println("Draw: ");
+                System.out.println("PlayersScore: " + playerScore);
+                System.out.println("PcScore: " + pcScore);
+            }
+            if (writer.equals("Paper") && randomNumber == 2) {
+                System.out.println("PC wins: ");
+                pcScore++;
+                System.out.println("PlayersScore: " + playerScore);
+                System.out.println("PcScore: " + pcScore);
+            }
+            if (writer.equals("Scissor") && randomNumber == 0) {
+                System.out.println("PC wins: ");
+                pcScore++;
+                System.out.println("PlayersScore: " + playerScore);
+                System.out.println("PcScore: " + pcScore);
+            }
+            if (writer.equals("Scissor") && randomNumber == 1) {
+                System.out.println("Player wins: ");
+                playerScore++;
+                System.out.println("PlayersScore: " + playerScore);
+                System.out.println("PcScore: " + pcScore);
+            }
+            if (writer.equals("Scissor") && randomNumber == 2) {
+                System.out.println("Draw: ");
+                System.out.println("PlayersScore: " + playerScore);
+                System.out.println("PcScore: " + pcScore);
+            }
+            if (playerScore == 3) {
+                System.out.println("Player Wins!");
+                break;
+            }
+            if (pcScore == 3) {
+                System.out.println("Pc Wins!");
+                break;
+            }
+        }
     }
 
     private static void minAndMax() {
