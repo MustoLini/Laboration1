@@ -1,9 +1,14 @@
+package folderMain;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
+    static Scanner in = new Scanner(System.in);
+    static int playerScore = 0;
+    static int pcScore = 0;
 
     public static void alternativeMenu() {
         System.out.println("1. Upp and down ");
@@ -13,47 +18,37 @@ public class Main {
         System.out.println("e. Exit ");
         Scanner alternativeIn = new Scanner(System.in);
         String alternative = alternativeIn.next();
-        if (alternative.equals("1")) {
-            uppAndDown();
+        switch (alternative) {
+            case "1" -> uppAndDown();
+            case "2" -> minAndMax();
+            case "3" -> rockPaperScissor();
+            case "4" -> inOrder();
+            case "e", "E" -> exit();
         }
-        if (alternative.equals("2")) {
-            minAndMax();
-        }
-        if (alternative.equals("3")) {
-            rockPaperScissor();
-        }
-        if (alternative.equals("4")) {
-            inOrder();
-
-        }
-        if (alternative.equals("e") || alternative.equals("E")) {
-            exit();
-        }
-
-
     }
 
     private static void exit() {
+        System.exit(0);
     }
 
     private static void inOrder() {
-        System.out.println("4");
-        Scanner writerAltern = new Scanner(System.in);
+        System.out.println("Please write five number, they will write out the Minimum, Maximum , Sum: ");
+
         int counter = 0;
         ArrayList<Integer> minAndMaxList = new ArrayList<>();
         while (counter != 5) {
-            int writer = Integer.parseInt(writerAltern.next());
+            int writer = Integer.parseInt(in.next());
             minAndMaxList.add(writer);
             counter++;
         }
         int sum = 0;
 
-        for (int i = 0; i < minAndMaxList.size(); i++) {
-            sum += minAndMaxList.get(i);
+        for (Integer integer : minAndMaxList) {
+            sum += integer;
         }
 
-        for (int i = 0; i < minAndMaxList.size(); i++) {
-            System.out.print(minAndMaxList.get(i) + " ");
+        for (Integer integer : minAndMaxList) {
+            System.out.print(integer + " ");
         }
         Collections.sort(minAndMaxList);
         System.out.println();
@@ -69,65 +64,50 @@ public class Main {
 
     private static void rockPaperScissor() {
         System.out.println("3");
-        int playerScore = 0;
-        int pcScore = 0;
         Random random = new Random();
-        Scanner writerAlt = new Scanner(System.in);
         int upperbound = 3;
         while (true) {
             System.out.println("Rock, Paper, Scissor What do you want to pick?");
             int randomNumber = random.nextInt(upperbound);
-            String writer = writerAlt.next();
+            String writer = in.next();
             if (writer.equals("Rock") && randomNumber == 0) {
-                System.out.println("Draw: ");
-                System.out.println("PlayersScore: " + playerScore);
-                System.out.println("PcScore: " + pcScore);
+                printScoreForDraw();
             }
             if (writer.equals("Rock") && randomNumber == 1) {
-                System.out.println("PC wins: ");
-                pcScore++;
-                System.out.println("PlayersScore: " + playerScore);
-                System.out.println("PcScore: " + pcScore);
+                printScoreForPc();
+
+
             }
             if (writer.equals("Rock") && randomNumber == 2) {
-                System.out.println("Player wins: ");
-                playerScore++;
-                System.out.println("PlayersScore: " + playerScore);
-                System.out.println("PcScore: " + pcScore);
+                printScoreForPlayer();
+
+
             }
             if (writer.equals("Paper") && randomNumber == 0) {
-                System.out.println("Player wins: ");
-                playerScore++;
-                System.out.println("PlayersScore: " + playerScore);
-                System.out.println("PcScore: " + pcScore);
+                printScoreForPlayer();
+
+
             }
             if (writer.equals("Paper") && randomNumber == 1) {
-                System.out.println("Draw: ");
-                System.out.println("PlayersScore: " + playerScore);
-                System.out.println("PcScore: " + pcScore);
+                printScoreForDraw();
             }
             if (writer.equals("Paper") && randomNumber == 2) {
-                System.out.println("PC wins: ");
-                pcScore++;
-                System.out.println("PlayersScore: " + playerScore);
-                System.out.println("PcScore: " + pcScore);
+                printScoreForPc();
+
+
             }
             if (writer.equals("Scissor") && randomNumber == 0) {
-                System.out.println("PC wins: ");
-                pcScore++;
-                System.out.println("PlayersScore: " + playerScore);
-                System.out.println("PcScore: " + pcScore);
+                printScoreForPc();
+
+
             }
             if (writer.equals("Scissor") && randomNumber == 1) {
-                System.out.println("Player wins: ");
-                playerScore++;
-                System.out.println("PlayersScore: " + playerScore);
-                System.out.println("PcScore: " + pcScore);
+                printScoreForPlayer();
+
+
             }
             if (writer.equals("Scissor") && randomNumber == 2) {
-                System.out.println("Draw: ");
-                System.out.println("PlayersScore: " + playerScore);
-                System.out.println("PcScore: " + pcScore);
+                printScoreForDraw();
             }
             if (playerScore == 3) {
                 System.out.println("Player Wins!");
@@ -140,8 +120,28 @@ public class Main {
         }
     }
 
+    private static void printScoreForPlayer() {
+        System.out.println("PC wins: ");
+        playerScore++;
+        System.out.println("PlayersScore: " + playerScore);
+        System.out.println("PcScore: " + pcScore);
+    }
+
+    public static void printScoreForPc() {
+        System.out.println("PC wins: ");
+        pcScore++;
+        System.out.println("PlayersScore: " + playerScore);
+        System.out.println("PcScore: " + pcScore);
+    }
+
+    private static void printScoreForDraw() {
+        System.out.println("Draw: ");
+        System.out.println("PlayersScore: " + playerScore);
+        System.out.println("PcScore: " + pcScore);
+    }
+
     private static void minAndMax() {
-        System.out.println("2");
+        System.out.println("Here is Min and Max of five numbers, so please type in five numbers:");
         Scanner writerAlt = new Scanner(System.in);
         int counter = 0;
         ArrayList<Integer> minAndMaxList = new ArrayList<>();
@@ -158,11 +158,12 @@ public class Main {
     }
 
     private static void uppAndDown() {
-        System.out.println("1");
+        System.out.println("This is Upp and Down: ");
+        System.out.println("If you don't want to add anymore things just type END: ");
         Scanner writerAlt = new Scanner(System.in);
         ArrayList<String> uppAndDownList = new ArrayList<>();
-        Boolean doNotStop = true;
-        while (doNotStop) {
+        while (true) {
+            System.out.println("Please write a number: ");
             String writer = writerAlt.next();
             if (writer.equals("END")) {
                 break;
@@ -177,7 +178,6 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        System.out.println("Hello world!");
         alternativeMenu();
 
     }
