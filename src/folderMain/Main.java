@@ -59,6 +59,7 @@ public class Main {
         System.out.println("Max value: " + max);
         System.out.println("Min value: " + min);
         System.out.println("Sum: " + sum);
+        alternativeMenu();
 
     }
 
@@ -118,6 +119,7 @@ public class Main {
                 break;
             }
         }
+        alternativeMenu();
     }
 
     private static void printScoreForPlayer() {
@@ -155,6 +157,7 @@ public class Main {
         System.out.println("Max value: " + max);
         System.out.println("Min value: " + min);
 
+        alternativeMenu();
     }
 
     private static void uppAndDown() {
@@ -175,6 +178,7 @@ public class Main {
             System.out.println(uppAndDownList.get(i));
 
         }
+        alternativeMenu();
     }
 
     public static void main(String[] args) {
