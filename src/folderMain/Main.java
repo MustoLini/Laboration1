@@ -16,14 +16,17 @@ public class Main {
         System.out.println("3. Rock, paper, scissor ");
         System.out.println("4. In Order ");
         System.out.println("e. Exit ");
-        Scanner alternativeIn = new Scanner(System.in);
-        String alternative = alternativeIn.next();
+        String alternative = in.next();
         switch (alternative) {
             case "1" -> uppAndDown();
             case "2" -> minAndMax();
             case "3" -> rockPaperScissor();
             case "4" -> inOrder();
             case "e", "E" -> exit();
+            default -> {
+                System.out.println("You wrote something else then your options:");
+                alternativeMenu();
+            }
         }
     }
 
@@ -144,11 +147,10 @@ public class Main {
 
     private static void minAndMax() {
         System.out.println("Here is Min and Max of five numbers, so please type in five numbers:");
-        Scanner writerAlt = new Scanner(System.in);
         int counter = 0;
         ArrayList<Integer> minAndMaxList = new ArrayList<>();
         while (counter != 5) {
-            int writer = Integer.parseInt(writerAlt.next());
+            int writer = Integer.parseInt(in.next());
             minAndMaxList.add(writer);
             counter++;
         }
@@ -163,11 +165,10 @@ public class Main {
     private static void uppAndDown() {
         System.out.println("This is Upp and Down: ");
         System.out.println("If you don't want to add anymore things just type END: ");
-        Scanner writerAlt = new Scanner(System.in);
         ArrayList<String> uppAndDownList = new ArrayList<>();
         while (true) {
             System.out.println("Please write a number: ");
-            String writer = writerAlt.next();
+            String writer = in.next();
             if (writer.equals("END")) {
                 break;
             }
