@@ -10,7 +10,6 @@ public class Laboratory {
     private int playerScore = 0;
     private int pcScore = 0;
     private ArrayList<Integer> minAndMaxList = new ArrayList<>();
-
     public void alternativeMenu() {
         System.out.println("""
                 1. Upp and down:
@@ -33,42 +32,9 @@ public class Laboratory {
         }
         in.nextLine();
     }
-
     private void exit() {
         System.exit(0);
     }
-
-    private void inOrder() {
-        System.out.println("Please write five number, they will write out the Minimum, Maximum , Sum: ");
-        String writer = in.nextLine();
-        System.out.println();
-        System.out.println(writer);
-
-        String[] split = writer.split(" ");
-        for (String a : split) {
-            minAndMaxList.add(Integer.parseInt(a));
-        }
-        int sum = 0;
-        for (Integer integer : minAndMaxList) {
-            sum += integer;
-        }
-
-        Collections.sort(minAndMaxList);
-        System.out.println("Second Max value: " + minAndMaxList.get(3));
-        System.out.println("Second Min value: " + minAndMaxList.get(1));
-        int min = Collections.min(minAndMaxList);
-        int max = Collections.max(minAndMaxList);
-        System.out.println("Max value: " + max);
-        System.out.println("Min value: " + min);
-        System.out.println("Sum: " + sum);
-
-        minAndMaxList.clear();
-        System.out.println();
-        alternativeMenu();
-        in.nextLine();
-
-    }
-
     private void rockPaperScissor() {
         System.out.println("3");
         Random random = new Random();
@@ -130,27 +96,23 @@ public class Laboratory {
         alternativeMenu();
         in.nextLine();
     }
-
     private void printScoreForPlayer() {
         System.out.println("Player wins: ");
         playerScore++;
         System.out.println("PlayersScore: " + playerScore);
         System.out.println("PcScore: " + pcScore);
     }
-
     public void printScoreForPc() {
         System.out.println("PC wins: ");
         pcScore++;
         System.out.println("PlayersScore: " + playerScore);
         System.out.println("PcScore: " + pcScore);
     }
-
     private void printScoreForDraw() {
         System.out.println("Draw: ");
         System.out.println("PlayersScore: " + playerScore);
         System.out.println("PcScore: " + pcScore);
     }
-
     private void minAndMax() {
         System.out.println("Here is Min and Max of five numbers, so please type in five numbers:");
         int counter = 0;
@@ -170,7 +132,6 @@ public class Laboratory {
         alternativeMenu();
         in.nextLine();
     }
-
     private void uppAndDown() {
         System.out.println("This is Upp and Down: ");
         System.out.println("If you don't want to add anymore things just type END: ");
@@ -192,5 +153,35 @@ public class Laboratory {
 
         System.out.println();
         alternativeMenu();
+    }
+    private void inOrder() {
+        System.out.println("Please write numbers, they will write out the Minimum, Maximum , Sum: ");
+        String writer = in.nextLine();
+        System.out.println();
+        System.out.println(writer);
+
+        String[] split = writer.split(" ");
+        for (String a : split) {
+            minAndMaxList.add(Integer.parseInt(a));
+        }
+        int sum = 0;
+        for (Integer integer : minAndMaxList) {
+            sum += integer;
+        }
+
+        Collections.sort(minAndMaxList);
+        System.out.println("Second Max value: " + minAndMaxList.get(minAndMaxList.size()-2));
+        System.out.println("Second Min value: " + minAndMaxList.get(1));
+        int min = Collections.min(minAndMaxList);
+        int max = Collections.max(minAndMaxList);
+        System.out.println("Max value: " + max);
+        System.out.println("Min value: " + min);
+        System.out.println("Sum: " + sum);
+
+        minAndMaxList.clear();
+        System.out.println();
+        alternativeMenu();
+        in.nextLine();
+
     }
 }
