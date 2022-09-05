@@ -1,14 +1,12 @@
 package folderMain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     static Scanner in = new Scanner(System.in);
     static int playerScore = 0;
     static int pcScore = 0;
+    static ArrayList<Integer> minAndMaxList = new ArrayList<>();
 
     public static void alternativeMenu() {
         System.out.println("1. Upp and down ");
@@ -36,20 +34,19 @@ public class Main {
 
     private static void inOrder() {
         System.out.println("Please write five number, they will write out the Minimum, Maximum , Sum: ");
+        Scanner userInput = new Scanner(System.in);
+        String writer = userInput.nextLine();
+        System.out.println(writer);
 
-        int counter = 0;
-        ArrayList<Integer> minAndMaxList = new ArrayList<>();
-        while (counter != 5) {
-            int writer = Integer.parseInt(in.next());
-            minAndMaxList.add(writer);
-            counter++;
+        String[] split = writer.split(" ");
+        for (String a : split) {
+            System.out.println(a);
+            minAndMaxList.add(Integer.parseInt(a));
         }
         int sum = 0;
-
         for (Integer integer : minAndMaxList) {
             sum += integer;
         }
-
         for (Integer integer : minAndMaxList) {
             System.out.print(integer + " ");
         }
@@ -63,7 +60,6 @@ public class Main {
         System.out.println("Min value: " + min);
         System.out.println("Sum: " + sum);
         alternativeMenu();
-
     }
 
     private static void rockPaperScissor() {
@@ -184,7 +180,6 @@ public class Main {
 
     public static void main(String[] args) {
         alternativeMenu();
-
     }
 
 }
