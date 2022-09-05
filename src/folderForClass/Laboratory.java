@@ -28,11 +28,11 @@ public class Laboratory {
             case "e", "E" -> exit();
             default -> {
                 System.out.println("You wrote something else then your options:");
+                alternativeMenu();
             }
         }
         in.nextLine();
     }
-
 
     private void exit() {
         System.exit(0);
@@ -41,22 +41,19 @@ public class Laboratory {
     private void inOrder() {
         System.out.println("Please write five number, they will write out the Minimum, Maximum , Sum: ");
         String writer = in.nextLine();
+        System.out.println();
         System.out.println(writer);
 
         String[] split = writer.split(" ");
         for (String a : split) {
-            System.out.println(a);
             minAndMaxList.add(Integer.parseInt(a));
         }
         int sum = 0;
         for (Integer integer : minAndMaxList) {
             sum += integer;
         }
-        for (Integer integer : minAndMaxList) {
-            System.out.print(integer + " ");
-        }
+
         Collections.sort(minAndMaxList);
-        System.out.println();
         System.out.println("Second Max value: " + minAndMaxList.get(3));
         System.out.println("Second Min value: " + minAndMaxList.get(1));
         int min = Collections.min(minAndMaxList);
@@ -65,6 +62,7 @@ public class Laboratory {
         System.out.println("Min value: " + min);
         System.out.println("Sum: " + sum);
 
+        minAndMaxList.clear();
         System.out.println();
         alternativeMenu();
         in.nextLine();
@@ -168,6 +166,7 @@ public class Laboratory {
         System.out.println("Min value: " + min);
 
         System.out.println();
+        minAndMaxList.clear();
         alternativeMenu();
         in.nextLine();
     }
