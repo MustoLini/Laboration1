@@ -102,7 +102,7 @@ public class Laboratory {
         System.out.println("PlayersScore: " + playerScore);
         System.out.println("PcScore: " + pcScore);
     }
-    public void printScoreForPc() {
+    private void printScoreForPc() {
         System.out.println("PC wins: ");
         pcScore++;
         System.out.println("PlayersScore: " + playerScore);
