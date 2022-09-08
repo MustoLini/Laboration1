@@ -43,7 +43,7 @@ public class Laboratory {
             System.out.println("Rock, Paper, Scissor What do you want to pick?");
             int randomNumber = random.nextInt(upperbound);
             String writer = in.nextLine();
-            ;
+
             if (writer.equalsIgnoreCase("Rock") && randomNumber == 0) {
                 printScoreForDraw();
             }
